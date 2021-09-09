@@ -125,6 +125,7 @@ public class ApplicationContext extends DefaultListableBeanFactory implements Be
         return getBean(beanClass.getName());
     }
 
+    //获取所有bean的名字
     public String[] getBeanDefinitionNames(){
         return this.beanDefinitionMap.keySet().toArray(new String[this.beanDefinitionMap.size()]);
     }
