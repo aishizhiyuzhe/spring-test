@@ -2,6 +2,7 @@ package com.aishizhiyuzhe.spring.foremwork.beans;
 
 public class BeanWrapper {
 
+    //¥Ê∑≈∂‘œÛ
     private Object wrappedInstance;
     private Class<?> wrappedClass;
 

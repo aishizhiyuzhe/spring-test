@@ -94,7 +94,7 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     private void initHandlerAdapters(ApplicationContext context) {
-        for (HandlerMapping handlerMapping:this.handlerMappings){
+        for (HandlerMapping handlerMapping:this.handlerMappings){//不太明白为什么以这个为key
             this.handlerAdaptors.put(handlerMapping,new HandlerAdapter());
         }
     }
@@ -104,7 +104,7 @@ public class DispatcherServlet extends HttpServlet {
         String templateRootPath=this.getClass().getClassLoader().getResource(templateRoot).getFile();
         File templateRootDir=new File(templateRootPath);
         for (File template:templateRootDir.listFiles()){
-            this.viewResolers.add(new ViewResolver(template.getName()));
+            this.viewResolers.add(new ViewResolver("templateRoot/"+template.getName()));
         }
     }
 

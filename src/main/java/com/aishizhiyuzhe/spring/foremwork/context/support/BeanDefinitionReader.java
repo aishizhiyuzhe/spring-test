@@ -13,7 +13,7 @@ import java.util.Properties;
 //对配置文件进行查找、读取、解析
 public class BeanDefinitionReader {
 
-    private List<String> registyBeanClasses=new ArrayList<String>();//登记
+    private List<String> registyBeanClasses=new ArrayList<String>();//登记所有class文件
     private Properties config=new Properties();
     private final String SCAN_PACKAGE="scanPackage";
 
@@ -32,7 +32,7 @@ public class BeanDefinitionReader {
                 }
             }
         }
-
+        doScaner(config.getProperty(SCAN_PACKAGE));
     }
 
     private void doScaner(String scanPackage){
@@ -78,7 +78,7 @@ public class BeanDefinitionReader {
         beanDefinition.setFactoryBeanName(factoryBeanName);
         return beanDefinition;
     }
-
+    //首字母转小写
     private String toLowerFirstCase(String simpleName){
         char[] chars=simpleName.toCharArray();
         chars[0]+=32;

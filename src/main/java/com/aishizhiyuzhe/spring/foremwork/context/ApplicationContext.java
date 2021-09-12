@@ -37,7 +37,7 @@ public class ApplicationContext extends DefaultListableBeanFactory implements Be
 
     @Override
     public void refresh() throws Exception {
-        reader=new BeanDefinitionReader();
+        reader=new BeanDefinitionReader(configLocations);
 
         List<BeanDefinition> beanDefinitions=reader.loadBeanDefinitionss();
         doRegisterBeanDefinition(beanDefinitions);
@@ -72,6 +72,7 @@ public class ApplicationContext extends DefaultListableBeanFactory implements Be
         beanPostProcessor.postProcessBeforeInitiallization(instance,beanName);
         BeanWrapper beanWrapper=new BeanWrapper(instance);
         this.factoryBeanInstanceCache.put(beanName,beanWrapper);
+        //这一步是用来给属性自动赋对象
         populateBean(beanName,instance);
         return this.factoryBeanInstanceCache.get(beanName).getWrappedInstance();
     }
